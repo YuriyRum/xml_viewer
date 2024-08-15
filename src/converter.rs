@@ -24,19 +24,86 @@ fn create_handler_function() {
     ").call0(&JsValue::default());
 }
 
-/// Implements XML converter
+/// Represents an XML converter
 pub struct XmlConverter {    
     style: Option<String>
 }
 
 impl XmlConverter {
-
+        /// Creates an XML converter.
+        ///
+        /// # Examples
+        ///
+        /// ```        
+        /// use xml_viewer::XmlConverter;
+        /// let converter = XmlConverter::new();
+        /// ```
         pub fn new() -> Self {
             XmlConverter {
-                style: None 
+                style: Some("
+                .xml-node {
+                    color: rgb(136, 18, 128);
+                }
+                .xml-expand {
+                    opacity: 0;
+                    pointer-events: none;
+                    font-size:.6rem;
+                }
+                .xml-node:has(.xml-node) > .xml-expand {
+                    opacity: 1;
+                    pointer-events: auto;
+                    color: rgb(149, 156, 166);                    
+                    cursor:pointer
+                }
+                .xml-error {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.5rem
+                }
+                .xml-container {
+                    width: 100%;
+                    height: 100%;
+                }
+                .xml-attr-prefix {
+                    color: rgb(153, 69, 0);
+                }
+                .xml-attr-value {
+                    color: rgb(26, 26, 166);
+                }
+                .xml-text-value {
+                    color: rgb(0, 0, 0);
+                }
+                ".to_string()) 
             }
         }
-
+        /// Creates an XML converter with a given style as a string.
+        ///
+        /// # Examples
+        ///
+        /// ```        
+        /// use xml_viewer::XmlConverter;
+        /// let converter = XmlConverter::with_style(
+        ///    "
+        ///                    .xml-node {
+        ///                         color: rgb(136, 18, 128); 
+        ///                     }
+        ///                     .xml-container {
+        ///                         width: 100%;
+        ///                         height: 100%;
+        ///                     }
+        ///                     .xml-attr-prefix {
+        ///                         color: rgb(153, 69, 0);
+        ///                     }
+        ///                     .xml-attr-value {
+        ///                         color: rgb(26, 26, 166);
+        ///                     }
+        ///                     .xml-text-value {
+        ///                         color: rgb(0, 0, 0);
+        ///                     } 
+        /// " 
+        /// );
+        /// ```
         #[allow(dead_code)]
         pub fn with_style(style: String) -> Self {
             XmlConverter {
@@ -44,6 +111,7 @@ impl XmlConverter {
             }
         }
 
+        /// Converts output HTML string
         pub fn to_html(&self, source: String) -> String {
             create_handler_function();
 

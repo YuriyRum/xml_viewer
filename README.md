@@ -4,9 +4,9 @@ The usage is quite simple (Hope sope 😀).
 The function 'create_component' creates a custom component with a specific name and the attribute 'source'. 
 If an xml string is passed to the 'source' attribute, the component renders an interactive xml tree on a page.
 
-TODOs: 
-    - add an example without custom component
-    - add documentation    
+v0.1.1
+- Example of usage without custom component is added
+
 
 Basic example:
 ```
@@ -20,5 +20,17 @@ fn run() {
 
 ```
 
+Example without custom component:
+
+```
+use wasm_bindgen::prelude::*;
+
+#[wasm_bindgen]
+pub fn convert_to_html(xml_source: String) -> String {
+    xml_viewer::convert_to_html(xml_source)
+}
+```
+
 Examples:
 - [Basic example](https://github.com/YuriyRum/xml_viewer/tree/master/examples/basic_example)
+- [Example without custom component](https://github.com/YuriyRum/xml_viewer/tree/master/examples/example_without_custom_component)

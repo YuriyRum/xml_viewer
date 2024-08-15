@@ -29,6 +29,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
+name = "example_without_custom_component"
+version = "0.1.0"
+dependencies = [
+ "wasm-bindgen",
+ "xml_viewer",
+]
+
+[[package]]
 name = "js-sys"
 version = "0.3.70"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -161,7 +169,7 @@ dependencies = [
 
 [[package]]
 name = "xml_viewer"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "RustyXML",
  "rs_web_component",

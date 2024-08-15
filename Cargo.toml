@@ -1,7 +1,7 @@
-workspace = { members = ["examples/basic_example"] }
+workspace = { members = ["examples/basic_example", "examples/example_without_custom_component"] }
 [package]
 name = "xml_viewer"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 
 
