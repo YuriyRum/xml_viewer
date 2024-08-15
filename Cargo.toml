@@ -1,0 +1,35 @@
+workspace = { members = ["examples/basic_example"] }
+[package]
+name = "xml_viewer"
+version = "0.1.0"
+edition = "2021"
+
+
+authors = ["YuriyRum<rumyua@gmail.com>"]
+description = "The project creates an interactive HTML page from an XML string. "
+readme = "README.md"
+homepage="https://github.com/YuriyRum/xml_viewer/"
+repository = "https://github.com/YuriyRum/xml_viewer/"
+license = "MIT"
+keywords = ["xml", "wasm", "viewer"]
+exclude = ["/target", ".*"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+RustyXML = "0.3.0"
+rs_web_component = "0.1.7"
+wasm-bindgen = "0.2.89"
+
+[dependencies.web-sys]
+version = "0.3.66"
+
+features = [
+    'HtmlElement',
+    'Document',
+    'Window',
+    'ShadowRoot',
+    'ShadowRootInit',
+    'ShadowRootMode'
+] 
